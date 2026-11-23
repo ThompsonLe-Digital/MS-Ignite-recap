@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+<meta charset="utf-8"><meta name="MSRAI_Label_dbd012e0-e600-4c3e-83b7-7d3141c15efc_AI_Disclosure" content="Made with AI">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="Every Microsoft Security announcement from Microsoft Ignite 2026 on one page: Microsoft Perception, Defender, Sentinel, Entra, Purview, Intune, Windows, Agent 365 and Azure.">
+<title>Microsoft Ignite 2026 · Security Recap</title>
+<style>
+:root{
+  color-scheme: light dark;
+  --bg:#f4f6fb; --surface:#ffffff; --surface-2:#eef1f8; --fg:#0c1430; --muted:#56617c; --border:#e1e6f0; --link:#3446d4;
+  --hero-1:#050918; --hero-2:#0b1540; --hero-3:#1a0f57; --hero-fg:#f5f7ff; --hero-muted:#b6c0e2; --hero-line:rgba(255,255,255,.07);
+  --hero-glass:rgba(255,255,255,.06); --hero-glass-border:rgba(255,255,255,.14);
+  --glow-1:#6d5dfc; --glow-2:#13b6dc; --glow-3:#c026d3;
+  --g1:#a5b4fc; --g2:#67e8f9; --g3:#f0abfc;
+  --ga-bg:#dcf6e6; --ga-fg:#0f5e37; --av-bg:#d9f5ef; --av-fg:#0b5d50; --pv-bg:#ebe7ff; --pv-fg:#4a2ab5;
+  --lp-bg:#e6eaf2; --lp-fg:#39445d; --soon-bg:#fff0d4; --soon-fg:#874800; --new-bg:#dcf0fb; --new-fg:#0a577f;
+  --a-perception:#7c3aed; --a-secops:#2563eb; --a-threat:#e11d48; --a-agents:#0d9488; --a-identity:#0284c7;
+  --a-data:#16a34a; --a-devices:#4f46e5; --a-foundations:#d97706; --a-cloud:#0891b2;
+  --shadow-sm:0 1px 2px rgba(12,20,48,.06);
+  --shadow-md:0 1px 2px rgba(12,20,48,.05), 0 14px 34px -14px rgba(12,20,48,.22);
+  --radius:16px; --maxw:1180px;
+  --font: "Segoe UI Variable Text","Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;
+  --font-display: "Segoe UI Variable Display","Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#060a17; --surface:#0e152d; --surface-2:#121a38; --fg:#e6eafa; --muted:#99a4c6; --border:#222b4d; --link:#a3b3ff;
+    --ga-bg:#0e3624; --ga-fg:#86efb4; --av-bg:#0b3530; --av-fg:#7ee9d6; --pv-bg:#261c5c; --pv-fg:#cbbfff;
+    --lp-bg:#202842; --lp-fg:#c4cbe2; --soon-bg:#3a2808; --soon-fg:#ffd28a; --new-bg:#0a2d44; --new-fg:#93d7ff;
+    --shadow-sm:0 1px 2px rgba(0,0,0,.35);
+    --shadow-md:0 1px 2px rgba(0,0,0,.4), 0 14px 34px -14px rgba(0,0,0,.7);
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-block-start:72px}
+body{margin:0; background:var(--bg); color:var(--fg); font-family:var(--font); line-height:1.6; text-align:start;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility}
+a{color:var(--link); text-underline-offset:3px}
+.wrap{max-width:var(--maxw); margin-inline:auto; padding-inline:clamp(1rem,4vw,2rem)}
+.sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
+h1,h2,h3,h4{font-family:var(--font-display); line-height:1.15; margin:0}
+
+/* ---------- HERO ---------- */
+.hero{position:relative; overflow:hidden; color:var(--hero-fg); isolation:isolate;
+  background:
+    radial-gradient(55rem 30rem at 88% -8%, color-mix(in srgb, var(--glow-1) 60%, transparent), transparent 62%),
+    radial-gradient(42rem 26rem at 4% 108%, color-mix(in srgb, var(--glow-2) 42%, transparent), transparent 62%),
+    radial-gradient(30rem 22rem at 52% 46%, color-mix(in srgb, var(--glow-3) 20%, transparent), transparent 70%),
+    linear-gradient(160deg, var(--hero-1), var(--hero-2) 55%, var(--hero-3));}
+.hero::before{content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
+  background-image:linear-gradient(var(--hero-line) 1px, transparent 1px), linear-gradient(90deg, var(--hero-line) 1px, transparent 1px);
+  background-size:46px 46px;
+  -webkit-mask-image:radial-gradient(ellipse at 70% 30%, #000 25%, transparent 78%); mask-image:radial-gradient(ellipse at 70% 30%, #000 25%, transparent 78%)}
+.hero-grid{display:grid; grid-template-columns:1.25fr 1fr; gap:clamp(2rem,5vw,4rem); align-items:center;
+  padding-block:clamp(3.5rem,8vw,6.5rem) clamp(3rem,6vw,5rem)}
+.eyebrow{display:inline-flex; align-items:center; gap:.55rem; font-size:.8rem; font-weight:650; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--hero-fg); background:var(--hero-glass); border:1px solid var(--hero-glass-border); padding:.4rem .8rem; border-radius:999px}
+.eyebrow .dot{width:.5rem; height:.5rem; border-radius:50%; background:var(--g2); box-shadow:0 0 0 4px color-mix(in srgb, var(--g2) 25%, transparent)}
+.hero h1{font-size:clamp(2.3rem,5.4vw,4.1rem); font-weight:750; letter-spacing:-.025em; margin-block:1.1rem .9rem}
+.grad{background:linear-gradient(92deg, var(--g1), var(--g2) 48%, var(--g3)); -webkit-background-clip:text; background-clip:text; color:transparent}
+.lede{font-size:clamp(1.05rem,1.6vw,1.22rem); color:var(--hero-muted); max-width:40rem; margin:0}
+.meta{display:flex; flex-wrap:wrap; gap:.5rem 1.25rem; margin-block:1.2rem 0; color:var(--hero-muted); font-size:.95rem}
+.meta span{display:inline-flex; align-items:center; gap:.4rem}
+.cta{display:flex; flex-wrap:wrap; gap:.75rem; margin-block-start:1.8rem}
+.btn{display:inline-flex; align-items:center; gap:.5rem; padding:.8rem 1.2rem; border-radius:12px; font-weight:650; text-decoration:none; font-size:.98rem; transition:transform .15s ease, background .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--hero-fg); color:var(--hero-1)}
+.btn-ghost{color:var(--hero-fg); background:var(--hero-glass); border:1px solid var(--hero-glass-border)}
+.btn .ico{width:18px; height:18px}
+.chips{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:.75rem; margin-block-start:2.2rem; max-width:40rem}
+.chip{background:var(--hero-glass); border:1px solid var(--hero-glass-border); border-radius:14px; padding:.75rem .9rem}
+.chip b{display:block; font-family:var(--font-display); font-size:1.65rem; line-height:1.1; letter-spacing:-.02em}
+.chip span{font-size:.78rem; color:var(--hero-muted)}
+
+/* stack visual */
+.stack{position:relative; display:grid; gap:.9rem; padding:1.4rem; border-radius:22px;
+  background:linear-gradient(160deg, rgba(255,255,255,.08), rgba(255,255,255,.02)); border:1px solid var(--hero-glass-border);
+  box-shadow:0 30px 80px -30px rgba(0,0,0,.6)}
+.stack-title{font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; color:var(--hero-muted); font-weight:650; margin:0 0 .2rem}
+.layer{position:relative; padding:1rem 1.1rem 1rem 3.4rem; border-radius:16px; background:var(--hero-glass); border:1px solid var(--hero-glass-border)}
+.layer .n{position:absolute; inset-inline-start:1rem; inset-block-start:1rem; width:1.7rem; height:1.7rem; border-radius:9px; display:grid; place-items:center;
+  font-size:.8rem; font-weight:750; color:var(--hero-1)}
+.layer strong{display:block; font-size:1.02rem}
+.layer small{display:block; color:var(--hero-muted); font-size:.84rem; line-height:1.45; margin-block-start:.2rem}
+.l3 .n{background:linear-gradient(135deg, var(--g3), var(--g1))}
+.l2 .n{background:linear-gradient(135deg, var(--g1), var(--g2))}
+.l1 .n{background:linear-gradient(135deg, var(--g2), #b7f7d8)}
+.l3{border-color:color-mix(in srgb, var(--g3) 45%, transparent)}
+.teams{display:flex; flex-wrap:wrap; gap:.4rem; margin-block-start:.55rem}
+.team{font-size:.72rem; font-weight:700; padding:.18rem .55rem; border-radius:999px; border:1px solid var(--hero-glass-border)}
+.t-red{background:rgba(244,63,94,.18)} .t-blue{background:rgba(59,130,246,.2)} .t-green{background:rgba(16,185,129,.2)}
+
+/* ---------- NAV ---------- */
+.nav{position:sticky; inset-block-start:0; z-index:20; background:color-mix(in srgb, var(--surface) 84%, transparent);
+  -webkit-backdrop-filter:saturate(180%) blur(14px); backdrop-filter:saturate(180%) blur(14px); border-block-end:1px solid var(--border)}
+.nav .wrap{display:flex; align-items:center; gap:1rem; min-height:58px}
+.brand{font-weight:750; font-size:.95rem; white-space:nowrap; display:flex; align-items:center; gap:.5rem; color:var(--fg); text-decoration:none}
+.brand .logo{width:22px; height:22px; border-radius:6px; background:linear-gradient(135deg, var(--a-perception), var(--a-secops) 55%, var(--a-cloud)); display:inline-block}
+.nav ul{display:flex; gap:.25rem; list-style:none; margin:0; padding:0; overflow-x:auto; scrollbar-width:none; flex:1}
+.nav ul::-webkit-scrollbar{display:none}
+.nav li a{display:block; padding:.45rem .7rem; border-radius:9px; color:var(--muted); text-decoration:none; font-size:.88rem; font-weight:600; white-space:nowrap}
+.nav li a:hover{color:var(--fg); background:var(--surface-2)}
+
+/* ---------- SECTIONS ---------- */
+section.block{padding-block:clamp(3rem,7vw,5rem)}
+.sec-head{display:flex; flex-wrap:wrap; align-items:end; justify-content:space-between; gap:1rem; margin-block-end:2rem}
+.sec-kicker{font-size:.8rem; font-weight:750; letter-spacing:.14em; text-transform:uppercase; color:var(--a-perception)}
+.sec-title{font-size:clamp(1.8rem,3.4vw,2.6rem); letter-spacing:-.02em; margin-block-start:.4rem}
+.sec-sub{color:var(--muted); max-width:46rem; margin:.6rem 0 0; font-size:1.05rem}
+
+/* big picture */
+.pillars{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.1rem}
+.pillar{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:1.5rem; box-shadow:var(--shadow-sm); position:relative; overflow:hidden}
+.pillar .num{font-family:var(--font-display); font-size:2.6rem; font-weight:800; letter-spacing:-.04em; line-height:1;
+  background:linear-gradient(135deg, var(--a-perception), var(--a-cloud)); -webkit-background-clip:text; background-clip:text; color:transparent}
+.pillar h3{font-size:1.25rem; margin-block:.8rem .5rem}
+.pillar p{margin:0; color:var(--muted)}
+.quote{margin-block-start:1.1rem; display:grid; grid-template-columns:auto 1fr; gap:1.2rem; align-items:center; padding:1.6rem 1.8rem; border-radius:var(--radius);
+  background:linear-gradient(135deg, color-mix(in srgb, var(--a-perception) 12%, var(--surface)), color-mix(in srgb, var(--a-cloud) 10%, var(--surface)));
+  border:1px solid var(--border)}
+.quote .mark{font-family:Georgia,serif; font-size:4rem; line-height:.6; color:var(--a-perception); opacity:.6}
+.quote blockquote{margin:0; font-family:var(--font-display); font-size:clamp(1.3rem,2.4vw,1.75rem); font-weight:700; letter-spacing:-.01em}
+.quote cite{display:block; font-style:normal; font-size:.92rem; color:var(--muted); margin-block-start:.4rem; font-weight:500}
+
+/* top 10 */
+.top10{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; list-style:none; margin:0; padding:0; counter-reset:t}
+.top10 li{display:grid; grid-template-columns:3.2rem 1fr; gap:1rem; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+  padding:1.15rem 1.25rem; box-shadow:var(--shadow-sm); transition:transform .18s ease, box-shadow .18s ease}
+.top10 li:hover{transform:translateY(-2px); box-shadow:var(--shadow-md)}
+.top10 .rank{font-family:var(--font-display); font-size:2rem; font-weight:800; letter-spacing:-.04em; line-height:1; color:var(--accent)}
+.top10 h3{font-size:1.06rem; margin-block-end:.3rem}
+.top10 p{margin:0; color:var(--muted); font-size:.95rem}
+.top10 .row{display:flex; flex-wrap:wrap; gap:.4rem; align-items:center; margin-block-start:.6rem}
+.area-tag{font-size:.75rem; font-weight:650; color:var(--accent); text-decoration:none; border:1px solid color-mix(in srgb, var(--accent) 35%, transparent); padding:.12rem .5rem; border-radius:999px}
+
+/* numbers band */
+.band{color:var(--hero-fg); background:
+  radial-gradient(40rem 20rem at 90% 0%, color-mix(in srgb, var(--glow-1) 45%, transparent), transparent 65%),
+  radial-gradient(30rem 18rem at 0% 100%, color-mix(in srgb, var(--glow-2) 35%, transparent), transparent 65%),
+  linear-gradient(160deg, var(--hero-1), var(--hero-2))}
+.band .sec-kicker{color:var(--g2)} .band .sec-sub{color:var(--hero-muted)}
+.stats{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:1rem}
+.stat{padding:1.3rem 1.2rem; border-radius:var(--radius); background:var(--hero-glass); border:1px solid var(--hero-glass-border)}
+.stat b{display:block; font-family:var(--font-display); font-size:clamp(1.9rem,3.2vw,2.5rem); font-weight:800; letter-spacing:-.03em; line-height:1.05}
+.stat:nth-child(4n+1) b{color:var(--g1)} .stat:nth-child(4n+2) b{color:var(--g2)} .stat:nth-child(4n+3) b{color:var(--g3)} .stat:nth-child(4n+4) b{color:#b7f7d8}
+.stat span{display:block; margin-block-start:.45rem; color:var(--hero-muted); font-size:.92rem; line-height:1.45}
+
+/* filter + areas */
+.f-input{position:absolute; opacity:0; pointer-events:none}
+.filterbar{display:flex; flex-wrap:wrap; align-items:center; gap:.5rem; margin-block-end:.9rem}
+.filterbar .lbl{font-size:.85rem; color:var(--muted); font-weight:650; margin-inline-end:.25rem}
+.filterbar label{cursor:pointer; user-select:none; padding:.5rem .95rem; border-radius:999px; border:1px solid var(--border); background:var(--surface);
+  font-weight:650; font-size:.9rem; color:var(--fg); display:inline-flex; gap:.45rem; align-items:center; transition:background .15s ease, color .15s ease}
+.filterbar label:hover{border-color:var(--muted)}
+.filterbar label em{font-style:normal; font-size:.78rem; padding:.05rem .45rem; border-radius:999px; background:var(--surface-2); color:var(--muted)}
+#f-all:checked ~ .filterbar label[for="f-all"], #f-now:checked ~ .filterbar label[for="f-now"],
+#f-pv:checked ~ .filterbar label[for="f-pv"], #f-soon:checked ~ .filterbar label[for="f-soon"]{background:var(--fg); color:var(--bg); border-color:var(--fg)}
+#f-all:checked ~ .filterbar label[for="f-all"] em, #f-now:checked ~ .filterbar label[for="f-now"] em,
+#f-pv:checked ~ .filterbar label[for="f-pv"] em, #f-soon:checked ~ .filterbar label[for="f-soon"] em{background:color-mix(in srgb, var(--bg) 20%, transparent); color:var(--bg)}
+#f-all:focus-visible ~ .filterbar label[for="f-all"], #f-now:focus-visible ~ .filterbar label[for="f-now"],
+#f-pv:focus-visible ~ .filterbar label[for="f-pv"], #f-soon:focus-visible ~ .filterbar label[for="f-soon"]{outline:3px solid var(--link); outline-offset:2px}
+#f-now:checked ~ .areas .card:not([data-s~="now"]),
+#f-pv:checked ~ .areas .card:not([data-s~="pv"]),
+#f-soon:checked ~ .areas .card:not([data-s~="soon"]){display:none}
+#f-now:checked ~ .areas .area:not(:has(.card[data-s~="now"])),
+#f-pv:checked ~ .areas .area:not(:has(.card[data-s~="pv"])),
+#f-soon:checked ~ .areas .area:not(:has(.card[data-s~="soon"])){display:none}
+.legend{display:flex; flex-wrap:wrap; gap:.5rem 1rem; color:var(--muted); font-size:.85rem; margin-block-end:2rem}
+.legend span{display:inline-flex; align-items:center; gap:.4rem}
+
+.areas{display:grid; gap:1.4rem}
+.area{display:grid; grid-template-columns:minmax(0,19rem) minmax(0,1fr); gap:1.6rem; padding:1.6rem; border-radius:22px;
+  background:var(--surface); border:1px solid var(--border); box-shadow:var(--shadow-sm); scroll-margin-block-start:80px}
+.area-head{position:relative}
+.area-head .stick{position:sticky; inset-block-start:84px}
+.tile{width:52px; height:52px; border-radius:14px; display:grid; place-items:center; color:#fff;
+  background:linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 55%, var(--a-cloud)));
+  box-shadow:0 10px 24px -10px color-mix(in srgb, var(--accent) 70%, transparent)}
+.tile .ico{width:26px; height:26px}
+.area-kicker{display:block; margin-block-start:1rem; font-size:.75rem; font-weight:750; letter-spacing:.1em; text-transform:uppercase; color:var(--accent)}
+.area h3{font-size:1.55rem; letter-spacing:-.015em; margin-block:.3rem .6rem}
+.area-intro{color:var(--muted); font-size:.95rem; margin:0}
+.area-links{display:flex; flex-direction:column; gap:.35rem; margin-block-start:1rem}
+.area-links a{display:inline-flex; align-items:center; gap:.35rem; font-size:.88rem; font-weight:650; text-decoration:none; color:var(--accent)}
+.area-links a:hover{text-decoration:underline}
+.area-links .ico{width:15px; height:15px}
+.area-count{display:inline-block; margin-block-start:1rem; font-size:.8rem; color:var(--muted)}
+.cards{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.9rem; align-content:start}
+.card{position:relative; background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:1.05rem 1.1rem 1.1rem; overflow:hidden;
+  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease}
+.card::before{content:""; position:absolute; inset-inline:0; inset-block-start:0; height:3px; background:linear-gradient(90deg, var(--accent), transparent 85%)}
+.card:hover{transform:translateY(-2px); box-shadow:var(--shadow-md); border-color:color-mix(in srgb, var(--accent) 35%, var(--border))}
+.card .badges{display:flex; flex-wrap:wrap; gap:.35rem; margin-block-end:.6rem}
+.card h4{font-size:1.02rem; letter-spacing:-.005em; margin-block-end:.35rem}
+.card p{margin:0; color:var(--muted); font-size:.92rem; line-height:1.55}
+
+.badge{display:inline-flex; align-items:center; gap:.35rem; font-size:.72rem; font-weight:700; letter-spacing:.01em; padding:.2rem .55rem; border-radius:999px; white-space:nowrap}
+.badge::before{content:""; width:.42rem; height:.42rem; border-radius:50%; background:currentColor; opacity:.85}
+.b-ga{background:var(--ga-bg); color:var(--ga-fg)} .b-av{background:var(--av-bg); color:var(--av-fg)}
+.b-pv{background:var(--pv-bg); color:var(--pv-fg)} .b-lp{background:var(--lp-bg); color:var(--lp-fg)}
+.b-soon{background:var(--soon-bg); color:var(--soon-fg)} .b-new{background:var(--new-bg); color:var(--new-fg)}
+
+/* timeline */
+.tl{position:relative; display:grid; gap:1.1rem; margin:0; padding:0; list-style:none}
+.tl::before{content:""; position:absolute; inset-block:.6rem; inset-inline-start:11px; width:2px; border-radius:2px;
+  background:linear-gradient(var(--a-perception), var(--a-secops), var(--a-cloud), var(--a-foundations))}
+.tl > li{position:relative; padding-inline-start:2.6rem}
+.tl > li::before{content:""; position:absolute; inset-inline-start:3px; inset-block-start:.45rem; width:18px; height:18px; border-radius:50%;
+  background:var(--surface); border:4px solid var(--a-perception); box-shadow:0 0 0 4px var(--surface-2)}
+.tl > li:nth-child(2)::before{border-color:var(--a-secops)} .tl > li:nth-child(3)::before{border-color:var(--a-identity)}
+.tl > li:nth-child(4)::before{border-color:var(--a-cloud)} .tl > li:nth-child(5)::before{border-color:var(--a-foundations)}
+.tl-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:1.1rem 1.3rem; box-shadow:var(--shadow-sm)}
+.tl-date{display:flex; flex-wrap:wrap; align-items:baseline; gap:.3rem .8rem}
+.tl-date b{font-family:var(--font-display); font-size:1.2rem; letter-spacing:-.01em}
+.tl-date span{font-size:.78rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+.tl-card ul{margin:.55rem 0 0; padding-inline-start:1.1rem; color:var(--muted)}
+.tl-card li{margin-block:.2rem}
+
+/* next steps */
+.steps{display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:1rem; counter-reset:s; list-style:none; margin:0; padding:0}
+.steps li{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:1.25rem; box-shadow:var(--shadow-sm); counter-increment:s}
+.steps li::before{content:counter(s, decimal-leading-zero); display:inline-grid; place-items:center; width:2.2rem; height:2.2rem; border-radius:10px;
+  font-weight:800; font-size:.9rem; color:#fff; background:linear-gradient(135deg, var(--a-perception), var(--a-secops))}
+.steps h3{font-size:1.02rem; margin-block:.8rem .4rem}
+.steps p{margin:0; color:var(--muted); font-size:.9rem}
+
+/* sessions */
+.sessions{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.7rem; list-style:none; margin:0; padding:0}
+.sessions li{display:flex; align-items:center; gap:.9rem; background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:.8rem 1rem}
+.code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace; font-size:.8rem; font-weight:700; padding:.25rem .55rem; border-radius:8px;
+  background:var(--surface-2); color:var(--a-perception); border:1px solid var(--border); white-space:nowrap}
+.sessions span{font-weight:600; font-size:.95rem}
+.hint{color:var(--muted); font-size:.9rem; margin-block-start:1rem}
+
+/* sources */
+.sources{columns:2; column-gap:2rem; margin:0; padding:0; list-style:none}
+.sources li{break-inside:avoid; padding-block:.6rem; border-block-end:1px dashed var(--border)}
+.sources a{font-weight:650; text-decoration:none}
+.sources a:hover{text-decoration:underline}
+.sources small{display:block; color:var(--muted); font-size:.82rem}
+
+/* footer */
+footer{border-block-start:1px solid var(--border); padding-block:2.2rem 3rem; color:var(--muted); font-size:.9rem}
+footer .wrap{display:flex; flex-wrap:wrap; justify-content:space-between; gap:1rem}
+footer p{margin:0; max-width:52rem}
+.backtop{font-weight:650; text-decoration:none; white-space:nowrap}
+
+/* responsive */
+@media (max-width:1040px){
+  .hero-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .area{grid-template-columns:1fr}
+  .area-head .stick{position:static}
+}
+@media (max-width:760px){
+  .chips{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pillars,.top10,.cards,.sessions{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .steps{grid-template-columns:1fr}
+  .sources{columns:1}
+  .brand .txt{display:none}
+}
+@media (prefers-reduced-motion: reduce){ *{transition:none !important; scroll-behavior:auto !important} }
+
+/* print */
+@media print{
+  :root{--bg:#fff; --surface:#fff; --surface-2:#f3f4f6; --fg:#000; --muted:#333; --border:#bbb;
+        --hero-fg:#000; --hero-muted:#333; --hero-glass:#fff; --hero-glass-border:#bbb; --g1:#3730a3; --g2:#0e7490; --g3:#86198f}
+  @page{margin:14mm}
+  .nav,.filterbar,.cta,.backtop,.legend{display:none !important}
+  .hero,.band{background:none !important; color:#000}
+  .hero::before{display:none}
+  .grad{color:#000; background:none}
+  .stat:nth-child(4n+4) b{color:#065f46}
+  .areas .card{display:block !important} .areas .area{display:grid !important}
+  .area{grid-template-columns:1fr; break-inside:auto}
+  .card,.pillar,.top10 li,.stat,.tl-card,.steps li,.sessions li{break-inside:avoid; box-shadow:none}
+  .area-head .stick{position:static}
+  section.block{padding-block:1.2rem}
+  a{color:#000}
+}
+</style>
+</head>
+<body>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow"><span class="dot"></span>Microsoft Ignite 2026 · Security recap</span>
+      <h1>Security for the <span class="grad">agentic era</span>: everything announced at Ignite 2026</h1>
+      <p class="lede">Every security announcement from Microsoft Ignite on one page: what's new, what's generally available, what's in preview and what's coming next.</p>
+      <div class="meta"><span><svg class="ico" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7"/></svg> Nov 17–20, 2026</span><span><svg class="ico" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7"/></svg> San Francisco &amp; online</span><span><svg class="ico" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7"/></svg> Based on official Microsoft announcements</span></div>
+      <div class="cta">
+        <a class="btn btn-primary" href="#top10">Top 10 in two minutes <svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+        <a class="btn btn-ghost" href="#updates">Explore all 67 updates</a>
+      </div>
+      <div class="chips" aria-label="At a glance">
+        <div class="chip"><b>67</b><span>updates summarized</span></div>
+        <div class="chip"><b>9</b><span>product areas</span></div>
+        <div class="chip"><b>22</b><span>available now, fully or in part</span></div>
+        <div class="chip"><b>49</b><span>in preview or coming soon</span></div>
+      </div>
+    </div>
+    
+<div class="stack" role="img" aria-label="Microsoft's new three-layer cyber stack: agents, harness and models on top of context, on top of signals, sensors and actuators">
+  <p class="stack-title">The new Microsoft cyber stack</p>
+  <div class="layer l3"><span class="n">3</span><strong>Agents, harness &amp; models</strong>
+    <small>Specialized security agents that work as teams through playbooks, using the right model for each task</small>
+    <div class="teams"><span class="team t-red">Red · attack</span><span class="team t-blue">Blue · defend</span><span class="team t-green">Green · fix</span></div></div>
+  <div class="layer l2"><span class="n">2</span><strong>Context</strong>
+    <small>Signals plus your own environment, turned into a real-time picture of your estate that agents can use</small></div>
+  <div class="layer l1"><span class="n">1</span><strong>Signals, sensors &amp; actuators</strong>
+    <small>Defender, Entra, Intune, Purview, Sentinel, network, OS, browser and cloud, plus 500+ partner connectors</small></div>
+</div>
+  </div>
+</header>
+
+<nav class="nav" aria-label="Sections">
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="logo" aria-hidden="true"></span><span class="txt">Ignite 2026 · Security</span></a>
+    <ul><li><a href="#top10">Top 10</a></li><li><a href="#big-picture">Big picture</a></li><li><a href="#numbers">By the numbers</a></li><li><a href="#updates">All updates</a></li><li><a href="#a-perception">Perception</a></li><li><a href="#a-secops">SecOps</a></li><li><a href="#a-threat">Threat protection</a></li><li><a href="#a-agents">AI agents</a></li><li><a href="#a-identity">Identity</a></li><li><a href="#a-data">Data</a></li><li><a href="#a-devices">Devices</a></li><li><a href="#a-foundations">Foundations</a></li><li><a href="#a-cloud">Cloud &amp; code</a></li><li><a href="#timeline">Timeline</a></li><li><a href="#next-steps">Next steps</a></li><li><a href="#sessions">Sessions</a></li><li><a href="#sources">Sources</a></li></ul>
+  </div>
+</nav>
+<main>
+
+<section class="block" id="top10" style="padding-block-start:clamp(3rem,6vw,4.5rem)">
+  <div class="wrap">
+    <div class="sec-head"><div>
+      <span class="sec-kicker">If you read only one thing</span>
+      <h2 class="sec-title">Top 10 security headlines</h2>
+      <p class="sec-sub">The announcements most likely to change how security teams work over the next six months.</p>
+    </div></div>
+    <ol class="top10"><li style="--accent: var(--a-perception)"><span class="rank">01</span><div>
+<h3>Microsoft Perception is generally available</h3><p>Red, blue and green AI agent teams that test, defend and fix through playbooks, with humans in control.</p>
+<div class="row"><span class="badge b-ga">GA</span><a class="area-tag" href="#a-perception">Microsoft Perception</a></div></div></li><li style="--accent: var(--a-secops)"><span class="rank">02</span><div>
+<h3>One SOC: SIEM + XDR in Microsoft Defender</h3><p>ISOC core capabilities are GA. Full SIEM breadth and 90 days of built-in Defender data are in preview.</p>
+<div class="row"><span class="badge b-ga">GA</span><span class="badge b-pv">Preview</span><a class="area-tag" href="#a-secops">Security operations</a></div></div></li><li style="--accent: var(--a-threat)"><span class="rank">03</span><div>
+<h3>Vulnerability shielding</h3><p>On by default in Defender, it temporarily protects unpatched systems, including on its own during an active attack.</p>
+<div class="row"><span class="badge b-pv">Preview</span><a class="area-tag" href="#a-threat">Threat protection</a></div></div></li><li style="--accent: var(--a-agents)"><span class="rank">04</span><div>
+<h3>Runtime protection for local AI agents</h3><p>Defender blocks malicious hidden instructions in agents such as Claude Code, GitHub Copilot CLI and ChatGPT on Windows.</p>
+<div class="row"><span class="badge b-ga">GA</span><a class="area-tag" href="#a-agents">Securing AI agents</a></div></div></li><li style="--accent: var(--a-agents)"><span class="rank">05</span><div>
+<h3>Dynamic Agent Risk</h3><p>One live risk level per agent, shared across Agent 365, Defender, Entra and Purview.</p>
+<div class="row"><span class="badge b-pv">Preview</span><a class="area-tag" href="#a-agents">Securing AI agents</a></div></div></li><li style="--accent: var(--a-identity)"><span class="rank">06</span><div>
+<h3>60 local agent types discovered, each with an Agent ID</h3><p>Shadow and third-party agents get an Entra identity, Conditional Access and lifecycle governance.</p>
+<div class="row"><span class="badge b-ga">GA</span><span class="badge b-pv">Preview</span><a class="area-tag" href="#a-identity">Identity &amp; network access</a></div></div></li><li style="--accent: var(--a-foundations)"><span class="rank">07</span><div>
+<h3>Baseline Security Mode 2026</h3><p>Secure defaults expand to Intune, Purview and Dynamics 365 with 24 new settings.</p>
+<div class="row"><span class="badge b-ga">GA</span><a class="area-tag" href="#a-foundations">Secure-by-default foundations</a></div></div></li><li style="--accent: var(--a-data)"><span class="rank">08</span><div>
+<h3>Copilot data protection without labeling everything</h3><p>Purview DLP stops Copilot from using sensitive files even when they aren&#x27;t labeled.</p>
+<div class="row"><span class="badge b-soon">Jan 2027</span><a class="area-tag" href="#a-data">Data security</a></div></div></li><li style="--accent: var(--a-cloud)"><span class="rank">09</span><div>
+<h3>Codename MDASH and MAI-Cyber-2-Flash</h3><p>An agentic code scanner with 100+ agents, powered by Microsoft&#x27;s purpose-built security models.</p>
+<div class="row"><span class="badge b-pv">Preview</span><a class="area-tag" href="#a-cloud">Cloud, network &amp; code</a></div></div></li><li style="--accent: var(--a-devices)"><span class="rank">10</span><div>
+<h3>Windows: stronger by default</h3><p>The endpoint security platform and administrator protection are GA. Baseline protection is in preview.</p>
+<div class="row"><span class="badge b-ga">GA</span><span class="badge b-pv">Preview</span><a class="area-tag" href="#a-devices">Devices &amp; Windows</a></div></div></li></ol>
+  </div>
+</section>
+
+<section class="block" id="big-picture">
+  <div class="wrap">
+    <div class="sec-head"><div>
+      <span class="sec-kicker">The big picture</span>
+      <h2 class="sec-title">Fighting AI with AI</h2>
+      <p class="sec-sub">Microsoft's message at Ignite: AI has shrunk the time from discovering a vulnerability to exploiting it from months to minutes, so defense has to run at machine speed too. The security announcements were grouped around three goals.</p>
+    </div></div>
+    <div class="pillars">
+      <article class="pillar"><div class="num">01</div><h3>Secure your foundations</h3>
+        <p>Close the gaps attackers go after first: shield unpatched systems, prioritize exposure, harden defaults with Baseline Security Mode, and protect data before AI reaches it.</p></article>
+      <article class="pillar"><div class="num">02</div><h3>Defend with agents</h3>
+        <p>Microsoft Perception puts teams of red, blue and green AI agents to work on triage, investigation, detection and remediation. People approve the high-impact actions.</p></article>
+      <article class="pillar"><div class="num">03</div><h3>Secure agentic insiders</h3>
+        <p>Discover every agent, give it an identity, contain what it can do, protect the data in its path and keep scoring its risk.</p></article>
+    </div>
+    <div class="quote">
+      <span class="mark" aria-hidden="true">“</span>
+      <div><blockquote>Agents are the new insiders.</blockquote>
+      <cite>Aleš Holeček, President and Chief Architect, Microsoft Security, on the Microsoft Security Blog</cite></div>
+    </div>
+  </div>
+</section>
+
+<section class="block band" id="numbers">
+  <div class="wrap">
+    <div class="sec-head"><div>
+      <span class="sec-kicker">By the numbers</span>
+      <h2 class="sec-title">The scale behind the news</h2>
+      <p class="sec-sub">Figures Microsoft shared alongside this year's security announcements.</p>
+    </div></div>
+    <div class="stats"><div class="stat"><b>165T+</b><span>security signals a day from Microsoft and partner sources</span></div><div class="stat"><b>~80%</b><span>of the alerts in a typical Defender queue can now be triaged by the Triage Agent</span></div><div class="stat"><b>60</b><span>local AI agent types Microsoft can now discover</span></div><div class="stat"><b>50M+</b><span>agents registered in Agent 365 since its May 2026 launch</span></div><div class="stat"><b>90 days</b><span>of built-in Defender data retention in ISOC, up from 30</span></div><div class="stat"><b>500+</b><span>data connectors for Sentinel and ISOC</span></div><div class="stat"><b>12.8%</b><span>of intrusions seen by Defender in the past year were ClickFix attacks</span></div><div class="stat"><b>96,000+</b><span>CVEs published in 2026, more than double 2024</span></div></div>
+  </div>
+</section>
+
+<section class="block" id="updates">
+  <div class="wrap">
+    <div class="sec-head"><div>
+      <span class="sec-kicker">All updates</span>
+      <h2 class="sec-title">Every security announcement, by product area</h2>
+      <p class="sec-sub">67 updates across 9 areas. Use the filters to see what you can use today and what's still in preview or on the way.</p>
+    </div></div>
+    <input class="f-input" type="radio" name="flt" id="f-all" checked>
+    <input class="f-input" type="radio" name="flt" id="f-now">
+    <input class="f-input" type="radio" name="flt" id="f-pv">
+    <input class="f-input" type="radio" name="flt" id="f-soon">
+    <div class="filterbar" role="group" aria-label="Filter updates by availability">
+      <span class="lbl">Show:</span>
+      <label for="f-all">All <em>67</em></label>
+      <label for="f-now">Available now <em>22</em></label>
+      <label for="f-pv">Preview <em>43</em></label>
+      <label for="f-soon">Coming soon <em>8</em></label>
+    </div>
+    <div class="legend">
+      <span><span class="badge b-ga">GA</span> generally available</span>
+      <span><span class="badge b-av">Available</span> opt-in or rolling out now</span>
+      <span><span class="badge b-pv">Preview</span> public preview</span>
+      <span><span class="badge b-lp">Limited</span> limited or private preview</span>
+      <span><span class="badge b-soon">Coming</span> dated future release</span>
+      <span><span class="badge b-new">New</span> announced, timing not stated</span>
+    </div>
+    <div class="areas">
+<section class="area" id="a-perception" style="--accent: var(--a-perception)" aria-labelledby="a-perception-h">
+  <div class="area-head"><div class="stick">
+    <div class="tile"><svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3.5l1.9 4.9 4.9 1.9-4.9 1.9L12 17.1l-1.9-4.9-4.9-1.9 4.9-1.9z"/><path d="M18.5 15.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg></div>
+    <span class="area-kicker">Agentic security</span>
+    <h3 id="a-perception-h">Microsoft Perception</h3>
+    <p class="area-intro">Microsoft&#x27;s agentic security system is now generally available. Teams of specialized red, blue and green AI agents work through playbooks to test, defend and fix, while your team sets the guardrails and approves high-impact actions.</p>
+    <div class="area-links"><a href="https://www.microsoft.com/en-us/security/blog/2026/11/17/security-for-the-agentic-era-powered-by-microsoft-perception/" target="_blank" rel="noopener">Microsoft Security Blog <svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a href="https://techcommunity.microsoft.com/blog/perception-blog/whats-new-with-microsoft-perception-at-ignite-2026/4571834" target="_blank" rel="noopener">Perception deep dive <svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div>
+    <span class="area-count">7 updates</span>
+  </div></div>
+  <div class="cards"><article class="card" data-s="now"><div class="badges"><span class="badge b-ga">GA</span></div>
+<h4>Microsoft Perception is generally available</h4><p>Formerly Project Perception. It coordinates red (attack simulation), blue (detection and investigation) and green (remediation) agent teams in a closed loop, with automated triggers, approval controls, audit logging, usage dashboards and a cost estimator.</p></article><article class="card" data-s="now"><div class="badges"><span class="badge b-ga">GA</span></div>
+<h4>Blue team agents for the SOC</h4><p>Alert Triage, Attack Investigation, Detection Authoring and Threat Intelligence agents. Triage can now handle about 80% of the alerts in a typical Defender queue; investigation follows an attack across endpoints, identities, email, Active Directory and cloud.</p></article><article class="card" data-s="now pv"><div class="badges"><span class="badge b-ga">Recon Agent GA</span><span class="badge b-pv">Web App Pen Test preview</span></div>
+<h4>Red team agents find weaknesses first</h4><p>The Recon Agent looks at your estate the way an attacker would. The new Web App Pen Test Agent proves which flaws are exploitable, and the Protect web app playbook carries the fix through to your code in GitHub.</p></article><article class="card" data-s="now pv"><div class="badges"><span class="badge b-ga">Posture Prioritization GA</span><span class="badge b-pv">Risk Reduction preview</span></div>
+<h4>Green team agents reduce exposure</h4><p>Prioritize the exposures that matter using threat intelligence and business context across Microsoft, AWS and Google Cloud. The Risk Reduction Agent coordinates patching through Intune, or recommends shielding when no patch is ready yet.</p></article><article class="card" data-s="pv"><div class="badges"><span class="badge b-pv">Preview</span></div>
+<h4>Beyond the Microsoft stack</h4><p>Agents can now reason over AWS, Okta and Salesforce signals. Playbooks launch from Defender or fire automatically, and MCP plus APIs connect Perception to your SIEM, SOAR and ITSM tools.</p></article><article class="card" data-s="new"><div class="badges"><span class="badge b-new">New</span></div>
+<h4>New detection and threat playbooks</h4><p>A detect emerging threats playbook turns threat research into tenant-aware KQL detections tested against your historical data. From any threat analytics article, Protect against a threat checks your coverage and adds custom detections.</p></article><article class="card" data-s="pv"><div class="badges"><span class="badge b-lp">Private preview</span></div>
+<h4>Playbooks to secure AI agents</h4><p>Perception and Microsoft 365 share signals and agent registry data to investigate AI posture risks and unusual agent behavior, then drive prioritized remediation.</p></article></div>
+</section>
+<section class="area" id="a-secops" style="--accent: var(--a-secops)" aria-labelledby="a-secops-h">
+  <div class="area-head"><div class="stick">
+    <div class="tile"><svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><path d="M12 12l5.5-5.5"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></div>
+    <span class="area-kicker">Microsoft Defender + Microsoft Sentinel</span>
+    <h3 id="a-secops-h">Security operations</h3>
+    <p class="area-intro">SIEM and XDR are merging into one Integrated Security Operations Center (ISOC) inside the Defender portal. It&#x27;s the shared data foundation that people and agents use to run an agentic SOC.</p>
+    <div class="area-links"><a href="https://techcommunity.microsoft.com/blog/microsoftthreatprotectionblog/ignite-2026-whats-new-in-microsoft-defender--sentinel/4569975" target="_blank" rel="noopener">Defender &amp; Sentinel post <svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a href="https://techcommunity.microsoft.com/blog/microsoftsentinelblog/ignite-2026-whats-new-in-microsoft-sentinel/4571174" target="_blank" rel="noopener">Sentinel post <svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div>
+    <span class="area-count">7 updates</span>
+  </div></div>
+  <div class="cards"><article class="card" data-s="now"><div class="badges"><span class="badge b-ga">Core GA</span></div>
+<h4>Integrated SOC (ISOC) in Microsoft Defender</h4><p>Case management, playbooks, workbooks, UEBA, workspace creation and third-party data ingestion are generally available. SIEM and threat protection now work in one experience.</p></article><article class="card" data-s="pv"><div class="badges"><span class="badge b-pv">Preview</span></div>
+<h4>Full SIEM and 90 days of Defender data included</h4><p>Eligible Defender Suite, Microsoft 365 E5 and E7 customers get the full breadth of Sentinel SIEM capabilities, 90-day default retention for Defender data (up from 30), 500+ connectors, reduced ingestion rates and a built-in data lake.</p></article><article class="card" data-s="now"><div class="badges"><span class="badge b-av">Opt-in from Nov 17</span></div>
+<h4>Sentinel customers can opt in to ISOC</h4><p>Existing Sentinel customers with Microsoft 365 E5, E7 or Defender Suite can move into ISOC, with ingestion at $2.4 per GB. Opting in is optional, so you can keep running Sentinel as you do today.</p></article><article class="card" data-s="soon"><div class="badges"><span class="badge b-soon">Public preview Dec 2026</span></div>
+<h4>Ingest-time data normalization</h4><p>Microsoft-managed parsers standardize selected logs as they arrive. Queries get simpler and faster, and the same data can be reused for detection, hunting, investigation and agents.</p></article><article class="card" data-s="pv"><div class="badges"><span class="badge b-pv">Preview</span></div>
+<h4>New SOC tooling</h4><p>SOC optimization recommendations, Content Hub and detections as code arrive in Defender, along with audit logs that show who created, changed, turned on or deleted automation rules and generated playbooks.</p></article><article class="card" data-s="new"><div class="badges"><span class="badge b-new">New</span></div>
+<h4>500+ connectors and richer context</h4><p>New sources include Edge for Business, Purview Information Protection, Dragon Copilot, CrowdStrike, Wiz, Salesforce and OpenAI audit logs. CrowdStrike detections can become Defender alerts, AWS and Okta signals extend attack disruption, and UEBA adds AWS GuardDuty, Check Point, Zscaler and Fortinet.</p></article><article class="card" data-s="pv soon"><div class="badges"><span class="badge b-soon">Builder Agent GA end of Nov</span><span class="badge b-pv">Health view preview</span></div>
+<h4>Build and monitor connectors faster</h4><p>The Sentinel Connector Builder Agent in VS Code uses AI to generate, validate and deploy connectors. A new Data &amp; Connectors overview in Defender shows connector health, ingestion volume and latency in one place.</p></article></div>
+</section>
+<section class="area" id="a-threat" style="--accent: var(--a-threat)" aria-labelledby="a-threat-h">
+  <div class="area-head"><div class="stick">
+    <div class="tile"><svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l7 3v5.2c0 4.4-2.9 8.1-7 9.8-4.1-1.7-7-5.4-7-9.8V6z"/><path d="M9 12l2.2 2.2L15.5 10"/></svg></div>
+    <span class="area-kicker">Microsoft Defender</span>
+    <h3 id="a-threat-h">Threat protection</h3>
+    <p class="area-intro">These protections aim to close the window between disclosure and patch, and to stop attacks where people actually work: the browser, Teams and the endpoint.</p>
+    <div class="area-links"><a href="https://techcommunity.microsoft.com/blog/microsoftthreatprotectionblog/ignite-2026-what%E2%80%99s-new-in-endpoint-security/4573835" target="_blank" rel="noopener">Endpoint security post <svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a href="https://techcommunity.microsoft.com/blog/microsoft-security-blog/threat-intelligence-that-moves-at-the-speed-of-the-threat-what%E2%80%99s-new-at-microsof/4573823" target="_blank" rel="noopener">Threat intelligence post <svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div>
+    <span class="area-count">9 updates</span>
+  </div></div>
+  <div class="cards"><article class="card" data-s="pv"><div class="badges"><span class="badge b-pv">Preview</span></div>
+<h4>Vulnerability shielding</h4><p>It&#x27;s on by default. AI picks the narrowest temporary control that protects an exposed, unpatched system, and applies it on its own during an active attack. That buys time until the permanent patch is deployed.</p></article><article class="card" data-s="now"><div class="badges"><span class="badge b-av">Rolling out by year end</span></div>
+<h4>ClickFix attacks blocked at the clipboard</h4><p>A new clipboard monitor catches malicious commands copied from fake CAPTCHAs and error pages before they reach the Run dialog, terminal or Explorer, then clears them. ClickFix made up 12.8% of the intrusions Defender observed over the past year.</p></article><article class="card" data-s="pv"><div class="badges"><span class="badge b-pv">Public preview</span></div>
+<h4>QR-code phishing protection in Teams</h4><p>Defender finds malicious URLs hidden in QR codes shared in Teams chats, blurs the harmful content and shows warning banners. It needs no extra admin setup, and analysts can hunt across it in advanced hunting.</p></article><article class="card" data-s="now"><div class="badges"><span class="badge b-av">Via certified partners</span></div>
+<h4>Deepfake detection in Teams meetings</h4><p>Detection of synthetic audio and video from certified third-party providers flags possible deepfakes in meetings. The detections appear in Defender alongside your other security signals.</p></article><article class="card" data-s="pv"><div class="badges"><span class="badge b-pv">Preview</span></div>
+<h4>Zero-day and emerging-threat intelligence</h4><p>A revamped threat intelligence experience labels zero-day and emerging threats and adds a zero-day widget, industry and region filters, and email alerts. A one-click Perception playbook then checks your coverage.</p></article><article class="card" data-s="pv"><div class="badges"><span class="badge b-pv">Preview in coming weeks</span></div>
+<h4>Endpoint health dashboard</h4><p>One view shows deployment, cloud connectivity, antivirus status and update currency across your endpoint estate. You can drill into affected devices and open remediation guidance.</p></article><article class="card" data-s="new"><div class="badges"><span class="badge b-new">New</span></div>
+<h4>Safer change and device lifecycle</h4><p>Staged deployment channels for Defender platform and engine updates on Windows and Linux, opt-in by feature for previews, traceable time-limited offboarding packages, and protection for shared Android and iOS frontline devices.</p></article><article class="card" data-s="soon"><div class="badges"><span class="badge b-soon">Public preview Dec 9</span></div>
+<h4>More custom data collection</h4><p>Collect Linux file events (created, deleted, renamed) and Windows registry events straight from the Defender portal, with no extra collection agent.</p></article><article class="card" data-s="new"><div class="badges"><span class="badge b-new">New</span></div>
+<h4>Stopping attacks on the identities behind agents</h4><p>New detections catch identity attacks aimed at agents, such as device-code phishing of a developer&#x27;s GitHub account to misuse GitHub Copilot CLI. Defender can automatically disable the account and revoke its sessions.</p></article></div>
+</section>
+<section class="area" id="a-agents" style="--accent: var(--a-agents)" aria-labelledby="a-agents-h">
+  <div class="area-head"><div class="stick">
+    <div class="tile"><svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4" y="8" width="16" height="11" rx="3"/><path d="M12 4.5V8"/><circle cx="12" cy="3.6" r="1.1"/><circle cx="9" cy="13.5" r="1.2" fill="currentColor"/><circle cx="15" cy="13.5" r="1.2" fill="currentColor"/><path d="M2 13v2M22 13v2"/></svg></div>
+    <span class="area-kicker">Agent 365 · Defender · Purview · Intune · Windows · Edge</span>
+    <h3 id="a-agents-h">Securing AI agents</h3>
+    <p class="area-intro">Microsoft&#x27;s plan here: discover every agent, give each one an identity, contain what it can do, protect the data in its path and keep reassessing its risk as it changes.</p>
+    <div class="area-links"><a href="https://techcommunity.microsoft.com/blog/agent-365-blog/whats-new-in-microsoft-agent-365-ignite-2026/4571753" target="_blank" rel="noopener">Agent 365 post <svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a href="https://news.microsoft.com/events/ignite/2026/book-of-news/" target="_blank" rel="noopener">Book of News: Security <svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div>
+    <span class="area-count">10 updates</span>
+  </div></div>
+  <div class="cards"><article class="card" data-s="now pv"><div class="badges"><span class="badge b-ga">Defender discovery GA</span><span class="badge b-pv">Network &amp; shadow AI preview</span></div>
+<h4>Find every agent, including shadow AI</h4><p>Discovery adds 35 local agent types for 60 in total, including Claude Code, OpenAI Codex and GitHub Copilot, plus third-party cloud agents on AWS and Google Cloud. Everything lands in the Agent 365 registry.</p></article><article class="card" data-s="pv"><div class="badges"><span class="badge b-pv">Preview</span></div>
+<h4>Dynamic Agent Risk</h4><p>Each agent gets one continuously updated risk level that combines identity, access, data, endpoint, cloud and network signals with exposure and blast radius. It appears in the Microsoft 365 admin center, Defender, Entra and Purview, and includes partner signals from Check Point, Cyera, Darktrace and Zenity.</p></article><article class="card" data-s="now"><div class="badges"><span class="badge b-ga">GA on Windows</span></div>
+<h4>Runtime protection for local AI agents</h4><p>Defender inspects the agent loop and can block hidden malicious instructions before the agent acts. Coverage includes Claude Code, GitHub Copilot CLI and app, VS Code extensions, OpenClaw, Ollama and ChatGPT. Choose Audit or Block mode in Defender or Intune (Defender for Endpoint P2).</p></article><article class="card" data-s="pv"><div class="badges"><span class="badge b-pv">Preview</span></div>
+<h4>Posture for third-party agent platforms</h4><p>Agents built on Amazon Bedrock, Google Gemini, Google Vertex AI and Anthropic Claude now appear in the same inventory as Copilot Studio and Foundry agents, with risk assessments and recommendations.</p></article><article class="card" data-s="pv"><div class="badges"><span class="badge b-pv">Preview, rolling out through Dec</span></div>
+<h4>Entra Agent ID for connected platforms</h4><p>Agents from Salesforce Agentforce, Amazon AgentCore, Google Vertex AI, Databricks, Snowflake, Anthropic, OpenAI, SAP, ServiceNow, UiPath and others get their own Entra identity. A guided connection wizard and secretless authentication make setup easier.</p></article><article class="card" data-s="pv"><div class="badges"><span class="badge b-pv">Preview</span></div>
+<h4>Contain local agents on the device</h4><p>Intune compliance policies flag devices that run unsanctioned agents so Conditional Access can block them. For approved agents, Microsoft Execution Containers (MXC) enforce file and network boundaries that the agent can&#x27;t change.</p></article><article class="card" data-s="pv"><div class="badges"><span class="badge b-pv">Preview</span></div>
+<h4>Windows process containers for agents</h4><p>New container controls set limits for each agent on COM and IPC communication, network reach and identity proofing. A learning mode lets you watch normal behavior before you enforce.</p></article><article class="card" data-s="now pv"><div class="badges"><span class="badge b-ga">Plugin &amp; skill governance GA</span><span class="badge b-pv">MCP governance preview</span><span class="badge b-lp">Action center Dec</span></div>
+<h4>Agent 365 governance upgrades</h4><p>Control centrally which people can use which plugins and skills in Copilot and Cowork, govern MCP servers from Azure AI Gateway and LiteLLM, and use a new action center to clean up inactive and ownerless agents.</p></article><article class="card" data-s="pv"><div class="badges"><span class="badge b-pv">Preview</span></div>
+<h4>Managed agent browsing in Edge for Business</h4><p>IT can require agents to use Edge for Business for browser tasks. Each agent gets its own clearly marked window and Entra agent identity, and stays within the user&#x27;s permissions.</p></article><article class="card" data-s="pv"><div class="badges"><span class="badge b-pv">Public preview</span></div>
+<h4>Multi-tenant agent management</h4><p>Partners and enterprises manage agents across all their tenants from one place, deciding which agents run where and who can use them.</p></article></div>
+</section>
+<section class="area" id="a-identity" style="--accent: var(--a-identity)" aria-labelledby="a-identity-h">
+  <div class="area-head"><div class="stick">
+    <div class="tile"><svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="8" cy="15" r="4"/><path d="M11 12l8.5-8.5M16.5 6.5l2 2M14.5 8.5l1.6 1.6"/></svg></div>
+    <span class="area-kicker">Microsoft Entra</span>
+    <h3 id="a-identity-h">Identity &amp; network access</h3>
+    <p class="area-intro">Entra&#x27;s goal for this release is secure access for every identity, human or agent, to any resource from anywhere. That covers stronger credentials, less standing access and new controls for agents.</p>
+    <div class="area-links"><a href="https://techcommunity.microsoft.com/blog/microsoft-entra-blog/ai-is-changing-access-see-how-microsoft-entra-helps-you-stay-ahead-/4556456" target="_blank" rel="noopener">Microsoft Entra post <svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div>
+    <span class="area-count">10 updates</span>
+  </div></div>
+  <div class="cards"><article class="card" data-s="now pv"><div class="badges"><span class="badge b-av">Passkeys default now</span><span class="badge b-pv">High assurance preview</span></div>
+<h4>Phishing-resistant from day one</h4><p>Passkeys are now the default for new Entra accounts. High assurance credentials add identity verification from partners such as AU10TIX, IDEMIA, CLEAR and Entrust at onboarding, before sensitive access and at account recovery.</p></article><article class="card" data-s="pv"><div class="badges"><span class="badge b-pv">Preview</span></div>
+<h4>Conditional Access policy plans</h4><p>You define access intent once and it&#x27;s enforced consistently across every identity. Templates, including ones for AI agents, help remove gaps and conflicts between policies.</p></article><article class="card" data-s="now pv"><div class="badges"><span class="badge b-pv">Preview</span><span class="badge b-ga">Windows 365 for Agents GA</span></div>
+<h4>Conditional Access for agents</h4><p>Write separate policies for local agents that act for a user, so you can block a risky agent while the employee keeps working. You can also restrict sensitive actions during risky sessions and extend Conditional Access to the Cloud PCs that agents use.</p></article><article class="card" data-s="now pv"><div class="badges"><span class="badge b-ga">Lifecycle policies GA</span><span class="badge b-pv">New Agent IDs preview</span></div>
+<h4>Agent identity lifecycle</h4><p>Discovered local agents (starting with GitHub Copilot CLI and Claude Code) get Agent IDs automatically, and Autopilot digital teammates get their own agent account and ID. Lifecycle policies check sponsors and activity, and agents inactive for 60 days are disabled by default.</p></article><article class="card" data-s="pv"><div class="badges"><span class="badge b-pv">Preview</span></div>
+<h4>Least privilege for people and agents</h4><p>PIM brings just-in-time access to more resources and to AI agents. It adds VM connections from My Access with session recording, AI recommendations for least-privilege roles, a PIM-only mode and bulk clean-up. Dynamic permissions fix agents that have too much access.</p></article><article class="card" data-s="now pv"><div class="badges"><span class="badge b-pv">Agent controls preview</span><span class="badge b-ga">Network DLP GA</span></div>
+<h4>Global Secure Access for the agentic era</h4><p>Get visibility into agent traffic, set network policies by agent type and use an MCP firewall for servers, tools and prompts. Purview DLP at the network layer, including for unsanctioned AI apps, is now generally available.</p></article><article class="card" data-s="pv"><div class="badges"><span class="badge b-pv">Preview</span></div>
+<h4>Govern every tenant, recover fast</h4><p>Cross-tenant configuration management with drift detection, multitenant management for Agent 365 and Copilot, Backup and Recovery Premium with 30-day retention, and hard-deletion protection for critical objects such as Agent IDs.</p></article><article class="card" data-s="now pv"><div class="badges"><span class="badge b-ga">GA</span><span class="badge b-pv">Dynamic groups preview</span></div>
+<h4>Governance and admin automation</h4><p>Guest lifecycle policies clean up inactive guest accounts automatically, and the Microsoft MCP Server for IT Admins lets AI tools query Entra, Purview and Intune data with permissions. New dynamic group rules follow existing memberships and reporting lines.</p></article><article class="card" data-s="pv"><div class="badges"><span class="badge b-pv">Preview</span></div>
+<h4>Customer identity with External ID</h4><p>Brand sign-in pages with your own HTML templates or bring your own authentication UX. Also new: multiple first-factor sign-in, Native Auth API v2, an AI agent toolkit, self-service passkey APIs and TOTP for external users.</p></article><article class="card" data-s="pv"><div class="badges"><span class="badge b-pv">Preview</span></div>
+<h4>Secure BYOD access through Edge</h4><p>Global Secure Access in Edge for Business lets employees reach private web apps from their work profile, even on personal devices, without a VPN client.</p></article></div>
+</section>
+<section class="area" id="a-data" style="--accent: var(--a-data)" aria-labelledby="a-data-h">
+  <div class="area-head"><div class="stick">
+    <div class="tile"><svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><ellipse cx="12" cy="6" rx="7" ry="2.8"/><path d="M5 6v6c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8V6"/><path d="M5 12v6c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8v-6"/></svg></div>
+    <span class="area-kicker">Microsoft Purview</span>
+    <h3 id="a-data-h">Data security</h3>
+    <p class="area-intro">Purview wants to get you to protection faster and cover every way sensitive data reaches AI: typed prompts, attachments, grounding data and agent tool calls.</p>
+    <div class="area-links"><a href="https://techcommunity.microsoft.com/blog/microsoft-security-blog/secure-the-data-that-fuels-ai-with-microsoft-purview/4573266" target="_blank" rel="noopener">Microsoft Purview post <svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div>
+    <span class="area-count">6 updates</span>
+  </div></div>
+  <div class="cards"><article class="card" data-s="soon"><div class="badges"><span class="badge b-soon">Public preview Jan 2027</span></div>
+<h4>Grounding protection for Copilot</h4><p>DLP can stop Copilot from using files that contain sensitive information even when they aren&#x27;t labeled, so you can roll out Copilot without labeling every file first.</p></article><article class="card" data-s="soon"><div class="badges"><span class="badge b-soon">Public preview Jan 2027</span></div>
+<h4>DLP for prompt attachments and links</h4><p>Protection now covers files attached to or linked in Copilot prompts, not just typed text.</p></article><article class="card" data-s="soon"><div class="badges"><span class="badge b-soon">Public preview Jan 2027</span></div>
+<h4>DLP for local AI agents</h4><p>See what local agents are doing and stop them from processing sensitive data that comes from prompts, files or tools. Policies can target a single agent or a group of agents.</p></article><article class="card" data-s="pv soon"><div class="badges"><span class="badge b-soon">From Jan 2027</span><span class="badge b-pv">Unified management preview</span></div>
+<h4>Classification that keeps up</h4><p>Improved built-in sensitive information types start with the 100+ most used ones. A recurring refresh reclassifies old content when classifiers improve, and every classifier type is now managed in one place.</p></article><article class="card" data-s="now pv"><div class="badges"><span class="badge b-ga">GA</span><span class="badge b-pv">Library labels preview</span></div>
+<h4>Auto-labeling at scale</h4><p>Label up to 500,000 SharePoint and OneDrive files a day (up from 100,000), simulate up to 20 million matches (up from 4 million) and target sites by attribute. Default library labels can now cover data at rest.</p></article><article class="card" data-s="pv"><div class="badges"><span class="badge b-pv">Public preview</span></div>
+<h4>Purview signals in agent risk</h4><p>Agent activity and interactions with sensitive data feed the agent risk score in Agent 365, so security teams can spot and prioritize risky agents.</p></article></div>
+</section>
+<section class="area" id="a-devices" style="--accent: var(--a-devices)" aria-labelledby="a-devices-h">
+  <div class="area-head"><div class="stick">
+    <div class="tile"><svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4" y="5" width="16" height="11" rx="2"/><path d="M2 19.5h20"/></svg></div>
+    <span class="area-kicker">Windows + Microsoft Intune</span>
+    <h3 id="a-devices-h">Devices &amp; Windows</h3>
+    <p class="area-intro">Windows is getting stronger by default and becoming a governed place to run AI agents. Intune now links vulnerability findings to automated fixes.</p>
+    <div class="area-links"><a href="https://blogs.windows.com/windowsexperience/2026/11/17/windows-security-at-ignite-2026-start-secure-protect-what-matters-prepare-for-ai/" target="_blank" rel="noopener">Windows security post <svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a href="https://techcommunity.microsoft.com/blog/microsoftintuneblog/what%E2%80%99s-new-in-microsoft-intune-at-microsoft-ignite/4570003" target="_blank" rel="noopener">Intune post <svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div>
+    <span class="area-count">7 updates</span>
+  </div></div>
+  <div class="cards"><article class="card" data-s="now"><div class="badges"><span class="badge b-ga">GA</span></div>
+<h4>Windows endpoint security platform</h4><p>Security vendors can move critical protection out of the kernel into user mode, which makes Windows more resilient without losing protection. Partners include Bitdefender, CrowdStrike, ESET, SentinelOne, Sophos, Trellix and TrendAI.</p></article><article class="card" data-s="now"><div class="badges"><span class="badge b-ga">GA</span></div>
+<h4>Windows administrator protection</h4><p>Local admins run with standard rights by default. Windows Hello verifies the user and grants admin rights for a single task, and those rights end when the task does.</p></article><article class="card" data-s="pv"><div class="badges"><span class="badge b-pv">Preview (Insider)</span></div>
+<h4>Windows baseline protection</h4><p>Secure boot, virtualization-based security and memory integrity combine into one versioned security state. You can verify it with hardware-backed attestation and get a clear yes or no for every device.</p></article><article class="card" data-s="new"><div class="badges"><span class="badge b-new">New</span></div>
+<h4>Post-quantum and passwordless</h4><p>The Windows TLS stack adds more post-quantum key exchange and authentication. Windows Hello sign-in gets faster, with new sign-in insights for IT, broader web sign-in and easier security keys.</p></article><article class="card" data-s="pv"><div class="badges"><span class="badge b-lp">Limited public preview</span></div>
+<h4>Intune Vulnerability Remediation Agent</h4><p>It combines Defender vulnerability intelligence with Intune device and app context to build and run automated app and OS patching plans. Run it from the Intune admin center or through Perception.</p></article><article class="card" data-s="pv"><div class="badges"><span class="badge b-pv">Insider preview</span></div>
+<h4>Windows Server in Intune and Autopatch</h4><p>Eligible servers, including edge and branch servers, join the same cloud management, compliance and update workflows as Windows clients.</p></article><article class="card" data-s="pv"><div class="badges"><span class="badge b-pv">App inventory preview</span><span class="badge b-lp">Auto-updates private preview</span></div>
+<h4>Keep apps current and governed</h4><p>Device-level app inventory, automatic updates for more verified Windows apps and app-in-use detection all help keep software current. Leading AI apps such as Copilot, GitHub Copilot, Claude and ChatGPT support Intune app protection.</p></article></div>
+</section>
+<section class="area" id="a-foundations" style="--accent: var(--a-foundations)" aria-labelledby="a-foundations-h">
+  <div class="area-head"><div class="stick">
+    <div class="tile"><svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3.5l9 4.8-9 4.8-9-4.8z"/><path d="M3 12.6l9 4.8 9-4.8"/><path d="M3 16.6l9 4.8 9-4.8" opacity=".55"/></svg></div>
+    <span class="area-kicker">Secure by default</span>
+    <h3 id="a-foundations-h">Secure-by-default foundations</h3>
+    <p class="area-intro">Attackers can now turn a flaw into an exploit within hours, so Microsoft is pushing safer defaults and hygiene programs you can measure.</p>
+    <div class="area-links"><a href="https://techcommunity.microsoft.com/blog/microsoft_365blog/ignite%E2%80%9926-spotlight-announcing-microsoft-baseline-security-mode-2026-general-ava/4572694" target="_blank" rel="noopener">Baseline security mode post <svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a href="https://techcommunity.microsoft.com/blog/microsoft-security-blog/new-investments-to-reduce-on-premises-security-risk/4570381" target="_blank" rel="noopener">On-premises initiative <svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div>
+    <span class="area-count">4 updates</span>
+  </div></div>
+  <div class="cards"><article class="card" data-s="now"><div class="badges"><span class="badge b-ga">GA, phased rollout</span></div>
+<h4>Baseline Security Mode 2026</h4><p>Microsoft&#x27;s recommended secure defaults now cover Intune, Purview and Dynamics 365, with Azure and Windows in private preview. It adds a new Applications category and 24 new settings, such as MFA for guests and blocking native COM add-ins. You can simulate each setting first.</p></article><article class="card" data-s="soon"><div class="badges"><span class="badge b-soon">Preview Jan 2027</span></div>
+<h4>AI Readiness Initiatives</h4><p>Measurable plans in Perception that follow Secure Now guidance. The first ones cover patching and vulnerability management, phishing-resistant admin sign-in, and agent discovery and governance. Progress is tracked with live tenant data.</p></article><article class="card" data-s="now"><div class="badges"><span class="badge b-av">Rolling out over time</span></div>
+<h4>On-premises security initiative</h4><p>Guidance, migration support and a future On-Premises Baseline Security Mode for Exchange Server, SharePoint Server and Skype for Business Server. The aim is faster updates, safer defaults and temporary protection against new threats.</p></article><article class="card" data-s="new"><div class="badges"><span class="badge b-new">Announced</span></div>
+<h4>AI Transparency Initiative</h4><p>Microsoft commits to helping organizations see what their AI accesses and does, verify it independently and control it, whatever the model. It&#x27;s expanding its work with NIST on agent standards and shaping the approach with more than 40 organizations, including Accenture, Adobe, KPMG, Mastercard and Volvo Cars.</p></article></div>
+</section>
+<section class="area" id="a-cloud" style="--accent: var(--a-cloud)" aria-labelledby="a-cloud-h">
+  <div class="area-head"><div class="stick">
+    <div class="tile"><svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 18.5h10.2a4.3 4.3 0 0 0 .6-8.5A6 6 0 0 0 6.3 11.6 3.5 3.5 0 0 0 7 18.5z"/><path d="M10.2 12.6l-1.6 1.6 1.6 1.6M13.8 12.6l1.6 1.6-1.6 1.6"/></svg></div>
+    <span class="area-kicker">Azure · Codename MDASH · Edge</span>
+    <h3 id="a-cloud-h">Cloud, network &amp; code</h3>
+    <p class="area-intro">Security is moving into the network fabric and the code pipeline, backed by AI models built specifically for cybersecurity.</p>
+    <div class="area-links"><a href="https://techcommunity.microsoft.com/blog/AzureNetworkingBlog/secure-ai-secure-with-ai-introducing-the-next-chapter-of-azure-firewall-/4573399" target="_blank" rel="noopener">Azure Firewall post <svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a href="https://techcommunity.microsoft.com/blog/AzureNetworkingBlog/introducing-agent-grid/4573407" target="_blank" rel="noopener">Agent Grid post <svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div>
+    <span class="area-count">7 updates</span>
+  </div></div>
+  <div class="cards"><article class="card" data-s="pv"><div class="badges"><span class="badge b-pv">Preview</span></div>
+<h4>Codename MDASH: agentic code security</h4><p>More than 100 specialized agents map the attack surface, scan code, debate and validate findings, and reproduce them where possible. MDASH now handles repositories up to 5 GB, runs in regulated clouds and produces fewer false positives.</p></article><article class="card" data-s="pv"><div class="badges"><span class="badge b-pv">Preview in MDASH</span></div>
+<h4>MAI-Cyber security models</h4><p>Microsoft calls MAI-Cyber-2-Flash its most capable security model so far. It&#x27;s in preview inside Codename MDASH, which also supports MAI Cyber 1.1 Flash.</p></article><article class="card" data-s="pv"><div class="badges"><span class="badge b-pv">Preview</span></div>
+<h4>Azure Firewall Premium AI add-on</h4><p>It adds five capabilities: inline AI anti-malware, inline AI application protection, prompt-injection protection, network DLP and AI policy.</p></article><article class="card" data-s="pv"><div class="badges"><span class="badge b-pv">Preview</span></div>
+<h4>Agent Grid</h4><p>Zero Trust network access for agents, based on identity. It provides microsegmentation, isolation and traffic policy for agent-to-model, agent-to-agent, MCP, PaaS, SaaS and internet connections.</p></article><article class="card" data-s="new"><div class="badges"><span class="badge b-new">Announced</span></div>
+<h4>Azure Adaptive Virtual Patching</h4><p>An AI-driven shield maps newly disclosed and zero-day vulnerabilities to your VM workloads and applies inline protections until the real patch arrives.</p></article><article class="card" data-s="pv"><div class="badges"><span class="badge b-pv">Preview</span></div>
+<h4>Confidential computing expands</h4><p>VR72 multi-GPU confidential computing for large models, Azure Confidential Enclaves and AKS Kata confidential containers, and Azure Confidential Clean Room for multiparty analytics without exposing raw data.</p></article><article class="card" data-s="now pv"><div class="badges"><span class="badge b-ga">Extension safety GA</span><span class="badge b-pv">More in preview</span></div>
+<h4>Edge for Business browser security</h4><p>An organization-wide inventory of browser extensions with Akamai and Spin.AI risk scores. Previews add extension leak control for protected pages and a native Sentinel connector for browser events.</p></article></div>
+</section></div>
+  </div>
+</section>
+
+<section class="block" id="timeline" style="background:var(--surface-2)">
+  <div class="wrap">
+    <div class="sec-head"><div>
+      <span class="sec-kicker">What's next</span>
+      <h2 class="sec-title">Timeline: what lands when</h2>
+      <p class="sec-sub">Dates Microsoft has published so far. Rollouts can vary by region, cloud and license.</p>
+    </div></div>
+    <ol class="tl"><li><div class="tl-card"><div class="tl-date"><b>Nov 17, 2026</b><span>Available at Ignite</span></div><ul><li>Microsoft Perception GA, including four blue team agents, the Recon Agent and the Posture Prioritization Agent</li><li>ISOC core capabilities GA; Sentinel customers can opt in to ISOC</li><li>Baseline Security Mode 2026 GA (phased rollout)</li><li>Defender runtime protection for local AI agents on Windows GA</li><li>Windows endpoint security platform and administrator protection GA</li></ul></div></li><li><div class="tl-card"><div class="tl-date"><b>End of Nov 2026</b><span>Coming this month</span></div><ul><li>Sentinel Connector Builder Agent in VS Code becomes generally available</li></ul></div></li><li><div class="tl-card"><div class="tl-date"><b>Dec 2026</b><span>Coming next month</span></div><ul><li>Entra External ID custom HTML templates fully available by Dec 7</li><li>Defender custom data collection for Linux files and Windows registry in public preview Dec 9</li><li>Sentinel ingest-time normalization in public preview</li><li>Agent 365 action center in private preview; Entra Agent ID rollout for connected platforms completes</li><li>ClickFix clipboard remediation reaches all Defender Antivirus devices by year end</li></ul></div></li><li><div class="tl-card"><div class="tl-date"><b>Jan 2027</b><span>Early next year</span></div><ul><li>AI Readiness Initiatives in Perception enter preview</li><li>Purview grounding protection for Copilot, DLP for prompt attachments and DLP for local agents in public preview</li><li>Recurring classification refresh in public preview; improved built-in sensitive information types begin rolling out</li></ul></div></li><li><div class="tl-card"><div class="tl-date"><b>Mar 31, 2027</b><span>Deadline</span></div><ul><li>Sentinel support in the Azure portal ends. Plan your move to the Defender portal</li></ul></div></li></ol>
+  </div>
+</section>
+
+<section class="block" id="next-steps">
+  <div class="wrap">
+    <div class="sec-head"><div>
+      <span class="sec-kicker">Put it to work</span>
+      <h2 class="sec-title">Five practical next steps</h2>
+      <p class="sec-sub">Practical ways to act on the announcements now.</p>
+    </div></div>
+    <ol class="steps"><li><h3>Simulate Baseline Security Mode</h3><p>In the Microsoft 365 admin center, go to Org Settings, then Security &amp; Privacy, then Baseline security mode. Run the new settings in simulation before you enforce them.</p></li><li><h3>Plan your ISOC and Defender portal move</h3><p>Check eligibility (Defender Suite, Microsoft 365 E5 or E7) for included SIEM and 90-day retention. Move Sentinel to the Defender portal before Mar 31, 2027.</p></li><li><h3>Inventory your agents</h3><p>Use Agent 365 to bring local, shadow and third-party agents into one registry. Start Defender runtime protection in Audit mode, then switch to Block.</p></li><li><h3>Get Copilot data protection ready</h3><p>Review your DLP policies and sensitive information types now, so the January 2027 grounding and prompt protections are ready to switch on.</p></li><li><h3>Pilot Perception playbooks</h3><p>Start with triage and investigation playbooks, set your approval guardrails, and use the cost estimator to plan usage.</p></li></ol>
+  </div>
+</section>
+
+<section class="block" id="sessions" style="padding-block-start:0">
+  <div class="wrap">
+    <div class="sec-head"><div>
+      <span class="sec-kicker">Watch on demand</span>
+      <h2 class="sec-title">Sessions worth your time</h2>
+    </div></div>
+    <ul class="sessions"><li><span class="code">KEY01</span><span>Microsoft Ignite opening keynote</span></li><li><span class="code">BRK324</span><span>The Alert Is Dead: The Blueprint for the Agentic SOC</span></li><li><span class="code">BRK343</span><span>AI is changing access: see how Microsoft Entra helps you stay ahead</span></li><li><span class="code">BRK340</span><span>A Zero Trust approach to securing AI runtime with Microsoft Defender</span></li><li><span class="code">BRK339</span><span>Local agents are here. Can you find and secure them?</span></li><li><span class="code">BRK321</span><span>Threat Intelligence reimagined: from signals to protection at AI speed</span></li><li><span class="code">BRK334</span><span>Modern Phishing Doesn&#x27;t End at the Click</span></li><li><span class="code">BRK405</span><span>What&#x27;s new in Windows security</span></li><li><span class="code">BRK391</span><span>Manage and govern AI agents on Windows</span></li><li><span class="code">BRK282</span><span>Always-on agentic security platform for code security</span></li></ul>
+    <p class="hint">Search a session code on the Microsoft Ignite website to find the recording.</p>
+  </div>
+</section>
+
+<section class="block" id="sources" style="background:var(--surface-2)">
+  <div class="wrap">
+    <div class="sec-head"><div>
+      <span class="sec-kicker">Go deeper</span>
+      <h2 class="sec-title">Official sources</h2>
+      <p class="sec-sub">Every item on this page is summarized from these 19 Microsoft posts. Follow them for full details, licensing and documentation.</p>
+    </div></div>
+    <ul class="sources"><li><a href="https://www.microsoft.com/en-us/security/blog/2026/11/17/security-for-the-agentic-era-powered-by-microsoft-perception/" target="_blank" rel="noopener">Security for the agentic era, powered by Microsoft Perception</a><small>Microsoft Security Blog</small></li><li><a href="https://news.microsoft.com/events/ignite/2026/book-of-news/" target="_blank" rel="noopener">Microsoft Ignite 2026 Book of News</a><small>Microsoft News</small></li><li><a href="https://blogs.microsoft.com/blog/2026/11/17/ignite-2026-building-the-frontier-ecosystem/" target="_blank" rel="noopener">Ignite 2026: Building the frontier ecosystem</a><small>Official Microsoft Blog</small></li><li><a href="https://techcommunity.microsoft.com/blog/microsoftthreatprotectionblog/ignite-2026-whats-new-in-microsoft-defender--sentinel/4569975" target="_blank" rel="noopener">Ignite 2026: What&#x27;s new in Microsoft Defender &amp; Sentinel</a><small>Microsoft Defender Blog</small></li><li><a href="https://techcommunity.microsoft.com/blog/microsoftsentinelblog/ignite-2026-whats-new-in-microsoft-sentinel/4571174" target="_blank" rel="noopener">Ignite 2026: What&#x27;s new in Microsoft Sentinel</a><small>Microsoft Sentinel Blog</small></li><li><a href="https://techcommunity.microsoft.com/blog/microsoftthreatprotectionblog/ignite-2026-what%E2%80%99s-new-in-endpoint-security/4573835" target="_blank" rel="noopener">Ignite 2026: What&#x27;s new in endpoint security</a><small>Microsoft Defender Blog</small></li><li><a href="https://techcommunity.microsoft.com/blog/perception-blog/whats-new-with-microsoft-perception-at-ignite-2026/4571834" target="_blank" rel="noopener">What&#x27;s new with Microsoft Perception at Ignite 2026</a><small>Microsoft Perception Blog</small></li><li><a href="https://techcommunity.microsoft.com/blog/agent-365-blog/whats-new-in-microsoft-agent-365-ignite-2026/4571753" target="_blank" rel="noopener">What&#x27;s new in Microsoft Agent 365: Ignite 2026</a><small>Agent 365 Blog</small></li><li><a href="https://techcommunity.microsoft.com/blog/microsoft-entra-blog/ai-is-changing-access-see-how-microsoft-entra-helps-you-stay-ahead-/4556456" target="_blank" rel="noopener">AI is changing access. See how Microsoft Entra helps you stay ahead.</a><small>Microsoft Entra Blog</small></li><li><a href="https://techcommunity.microsoft.com/blog/microsoft-security-blog/secure-the-data-that-fuels-ai-with-microsoft-purview/4573266" target="_blank" rel="noopener">Secure the data that fuels AI with Microsoft Purview</a><small>Microsoft Security Community Blog</small></li><li><a href="https://techcommunity.microsoft.com/blog/microsoft-security-blog/threat-intelligence-that-moves-at-the-speed-of-the-threat-what%E2%80%99s-new-at-microsof/4573823" target="_blank" rel="noopener">Threat intelligence that moves at the speed of the threat</a><small>Microsoft Security Community Blog</small></li><li><a href="https://techcommunity.microsoft.com/blog/microsoftintuneblog/what%E2%80%99s-new-in-microsoft-intune-at-microsoft-ignite/4570003" target="_blank" rel="noopener">What&#x27;s New in Microsoft Intune at Microsoft Ignite</a><small>Microsoft Intune Blog</small></li><li><a href="https://blogs.windows.com/windowsexperience/2026/11/17/windows-security-at-ignite-2026-start-secure-protect-what-matters-prepare-for-ai/" target="_blank" rel="noopener">Windows security at Ignite 2026</a><small>Windows Experience Blog</small></li><li><a href="https://blogs.windows.com/windowsexperience/2026/11/17/microsoft-ignite-2026-building-windows-for-the-next-era-of-work/" target="_blank" rel="noopener">Microsoft Ignite 2026: Building Windows for the next era of work</a><small>Windows Experience Blog</small></li><li><a href="https://techcommunity.microsoft.com/blog/microsoft_365blog/ignite%E2%80%9926-spotlight-announcing-microsoft-baseline-security-mode-2026-general-ava/4572694" target="_blank" rel="noopener">Announcing Microsoft Baseline security mode 2026 General Availability</a><small>Microsoft 365 Blog</small></li><li><a href="https://techcommunity.microsoft.com/blog/microsoft-security-blog/new-investments-to-reduce-on-premises-security-risk/4570381" target="_blank" rel="noopener">New investments to reduce on-premises security risk</a><small>Microsoft Security Community Blog</small></li><li><a href="https://techcommunity.microsoft.com/blog/AzureNetworkingBlog/secure-ai-secure-with-ai-introducing-the-next-chapter-of-azure-firewall-/4573399" target="_blank" rel="noopener">Secure AI. Secure with AI. Introducing the next chapter of Azure Firewall.</a><small>Azure Networking Blog</small></li><li><a href="https://techcommunity.microsoft.com/blog/AzureNetworkingBlog/introducing-agent-grid/4573407" target="_blank" rel="noopener">Introducing Agent Grid</a><small>Azure Networking Blog</small></li><li><a href="https://techcommunity.microsoft.com/blog/azurenetworkingblog/the-patch-window-is-closing-put-time-back-on-the-defender%E2%80%99s-side-/4573402" target="_blank" rel="noopener">The patch window is closing (Azure Adaptive Virtual Patching)</a><small>Azure Networking Blog</small></li></ul>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Unofficial summary compiled by Thompson Le on Nov 23, 2026 from Microsoft's public Ignite 2026 announcements (Nov 17–20, 2026). Product names, availability, licensing and dates are as announced and may change. Check the linked official posts for the latest details.</p>
+    <a class="backtop" href="#top">Back to top ↑</a>
+  </div>
+</footer>
+</body>
+</html>
